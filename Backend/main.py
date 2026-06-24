@@ -1,7 +1,7 @@
 from fastapi import FastAPI , HTTPException , status
 from typing import List
-from Backend.database import MEDICINES_DB
-from Backend.schemas import MedicienCreate , MedicienResponse
+from database import MEDICINES_DB
+from schemas import MedicienCreate , MedicienResponse
 
 app= FastAPI()
 
@@ -40,7 +40,7 @@ def update_medicien(medicien_id: int, update_data:MedicienCreate):
         "id":medicien_id,
         "name": update_data.name,
         "price": update_data.price,
-        "in_stock": MEDICINES_DB[medicien_id]["in_stock"]
+        "in_stock": MEDICINES_DB[medicien_id]
     }
     
     MEDICINES_DB[medicien_id]= update_record
