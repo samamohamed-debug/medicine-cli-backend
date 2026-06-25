@@ -1,20 +1,4 @@
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
-from dotenv import load_dotenv
-
-load_dotenv()
-
-DATABASE_URL = os.getenv("DATABASE_URL")
-
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
-
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+MEDICINES_DB={
+    1: {"id":1, "name":"Panadol", "price":5.5, "in_stock":True},
+    2:{"id":2 , "name":"Aspirin" , "price":50, "in_stock":True}
+}
